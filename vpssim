@@ -95,9 +95,9 @@ echo "========================================================================="
 echo "OK, Please wait ...."; sleep 3
 checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup" )
 if [[ "$checkurlstt" == "200" ]]; then
-curl -k https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
+wget -q https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
 else
-curl -k https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
+wget -q https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
 fi
 chmod +x /etc/vpssim/.tmp/vpssim-setup 
 clear 
@@ -111,5 +111,5 @@ clear
 curl -k https://vpssim.vn/script/vpssim/kiem-tra-test-vps -o testvps && sh testvps
 else
 clear
-curl -k https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim -o vpssim && sh vpssim
+wget -q https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim -o vpssim && sh vpssim
 fi
