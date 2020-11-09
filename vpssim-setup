@@ -175,33 +175,6 @@ clear
 bash /etc/vpssim/.tmp/vpssim-setup
 exit
 fi  
-
-prompt="Nhap lua chon cua ban: "
-options=( "MariaDB 10.3 " "MariaDB 10.2 " "MariaDB 10.1" "MariaDB 10.0")
-echo "=========================================================================="
-echo "Lua Chon Cai Dat Phien Ban MariaDB  "
-echo "=========================================================================="
-PS3="$prompt"
-select opt in "${options[@]}"; do 
-
-    case "$REPLY" in
-    1) mariadbversion="10.3"; break;;
-    2) mariadbversion="10.2"; break;;
-    3) mariadbversion="10.1"; break;;
-    4) mariadbversion="10.0"; break;;
-            
-    *) echo "Ban nhap sai ! Ban vui long chon so trong danh sach";continue;;
-    esac  
-done
-if [ "$mariadbversion" = "10.0" ]; then
-phienbanmariadb=10.0
-elif [ "$mariadbversion" = "10.1" ]; then
-phienbanmariadb=10.1
-elif [ "$mariadbversion" = "10.2" ]; then
-phienbanmariadb=10.2
-else
-phienbanmariadb=10.3
-fi
 arch=`uname -m`
 if [ "$(rpm -qf --queryformat="%{VERSION}" /etc/redhat-release)" == "6" ]; then 
 centosver=6
@@ -300,7 +273,7 @@ echo "phpMyAdmin Version: $phpmyadmin_version"
 echo "--------------------------------------------------------------------------"
 echo "Mat khau bao ve phpMyadmin: $matkhaubv"
 echo "--------------------------------------------------------------------------"
-echo "MariaDB Version: $phienbanmariadb"
+echo "MariaDB Version: 10.4"
 echo "--------------------------------------------------------------------------"
 echo "Mat khau tai khoan root MySQL: $passrootmysql"
 echo "--------------------------------------------------------------------------"
@@ -342,11 +315,9 @@ echo 'Someone has IP address '\$IPvpssimcheck' login to $svip on '\$timeloginvps
 END
 echo "$svport" > /etc/vpssim/.tmp/priport.txt
 cat > "/etc/yum.repos.d/mariadb.repo" <<END
-# MariaDB $phienbanmariadb CentOS repository list
-# http://downloads.mariadb.org/mariadb/repositories/
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/$phienbanmariadb/centos${centosver}-$XXX
+baseurl = http://yum.mariadb.org/10.4/centos7-amd64
 gpgkey=http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 END
@@ -552,20 +523,19 @@ cp -r /etc/vpssim/menu/inc/nginxFrepo/nginx.conf /etc/nginx/nginx.conf
 fi
 chmod +x /etc/init.d/nginx
 chmod +x /usr/sbin/nginx
-#########################################################################
-## Dem luot cai dat VPSSIM neu cai dat thanh cong - VPSSIM setup count: 
-/etc/vpssim/menu/inc/vpssim-dem-luot-cai-dat-setup-count
-#########################################################################
 # Download /etc/nginx/conf
 cp -avr /etc/vpssim/menu/inc/conf/ /etc/nginx
 #unzip /etc/vpssim/menu/inc/conf.zip -d /etc/nginx/
 find /etc/nginx/conf -type f -exec chmod 644 {} \;
 # End Download init & config file for nginx
 ############################
-yum -y install MariaDB-server MariaDB-client
+yum -y install MariaDB-* python3-*
 yum-config-manager --enable remi-php71
 yum -y install php php-common php-fpm php-gd php-devel php-json
 yum -y install php-curl php-pecl-zip php-zip php-soap php-cli php-ldap php-mysqlnd php-pear-Net-SMTP php-enchant php-mysql php-pear php-opcache php-pdo php-zlib php-xml php-mbstring php-mcrypt
+curl -k https://github.com/shally-vn/Vpssim-Mode-install/raw/main/pip.txt -o pip.txt
+pip3 install -r pip.txt
+rm -rf pip.txt
 ########### Check qua trinh cai dat Nginx ######################################
 if [ "$nginxrepo" != "1" ];then
 /etc/vpssim/menu/inc/vpssim-setup-nginx-from-repo
