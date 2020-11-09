@@ -64,7 +64,7 @@ gpgkey=http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 END
 yum -y install MariaDB-* python3-*
-wget https://github.com/shally-vn/Vpssim-Mode-install/raw/main/pip.txt
+wget https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/pip.txt
 pip3 install -r pip.txt
 sleep 5
 rm -rf pip.txt
@@ -93,11 +93,11 @@ done
 if [ "$luachon" = "caidatvpssim" ]; then
 echo "========================================================================="
 echo "OK, Please wait ...."; sleep 3
-checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup" )
+checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vpssim-setup" )
 if [[ "$checkurlstt" == "200" ]]; then
-wget -q https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
+wget -q https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
 else
-wget -q https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
+wget -q https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
 fi
 chmod +x /etc/vpssim/.tmp/vpssim-setup 
 clear 
@@ -111,5 +111,5 @@ clear
 curl -k https://vpssim.vn/script/vpssim/kiem-tra-test-vps -o testvps && sh testvps
 else
 clear
-wget -q https://github.com/shally-vn/Vpssim-Mode-install/raw/main/vpssim -o vpssim && sh vpssim
+wget -q https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vpssim -o vpssim && sh vpssim
 fi
