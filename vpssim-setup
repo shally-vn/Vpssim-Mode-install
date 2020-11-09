@@ -216,36 +216,7 @@ vpssim_version=`cat /etc/vpssim/.tmp/version.vpssim | awk '{print $3}'`
 ###############################################################################
 
 clear
-prompt="Nhap lua chon cua ban: "
-options=("Nginx Mainline Version" "Nginx Stable Version")
-echo "=========================================================================="
-echo "LUA CHON CAI DAT PHIEN BAN NGINX STABLE HOAC MAINLINE: "
-echo "=========================================================================="
-echo "STABLE: VPSSIM cai dat Nginx tu Nginx Repo."
-echo "--------------------------------------------------------------------------"
-echo "Day la phien ban stable. Qua trinh cai dat cho server se nhanh hon."
-echo "--------------------------------------------------------------------------"
-echo "Sau khi cai dat, ban khong the thay doi phien ban Nginx tuy chon. "
-echo "--------------------------------------------------------------------------"
-echo "Ban co the update Nginx cung voi he thong centos."
-echo "=========================================================================="
-echo "=========================================================================="
-echo "MAINLINE: VPSSIM cai dat Nginx tu source."
-echo "--------------------------------------------------------------------------"
-echo "Day la phien ban moi nhat cua Nginx, download tu Nginx.org. "
-echo "--------------------------------------------------------------------------"
-echo "Qua trinh cai dat se lau hon, sau khi cai dat ban co the thay do phien ban"
-echo "--------------------------------------------------------------------------"
-echo "Nginx va update Nginx tu source."
-echo "=========================================================================="
-PS3="$prompt"
-select opt in "${options[@]}"; do 
-    case "$REPLY" in
-    1) chonnginx="0"; break;;
-    2) chonnginx="1"; break;;          
-    *) echo "Ban nhap sai ! Ban vui long chon so trong danh sach";continue;;
-    esac  
-done
+chonnginx=0
 if [ "$chonnginx" = "1" ]; then
 nginxrepo=1
 echo "=========================================================================="
