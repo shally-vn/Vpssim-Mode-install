@@ -91,7 +91,7 @@ select opt in "${options[@]}"; do
     esac  
 done
 if [ "$luachon" = "caidatvpssim" ]; then
-echo "========================================================================="
+echo "========================================================================= ok "
 echo "OK, Please wait ...."; sleep 3
 checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vpssim-setup" )
 if [[ "$checkurlstt" == "200" ]]; then
@@ -99,11 +99,11 @@ wget -q https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vps
 else
 wget -q https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vpssim-setup -o vpssim-setup
 fi
-chmod +x /etc/vpssim/.tmp/vpssim-setup 
+chmod +x ./vpssim-setup 
 clear 
-bash /etc/vpssim/.tmp/vpssim-setup
+bash ./vpssim-setup
 elif [ "$luachon" = "check" ]; then
-echo "========================================================================="
+echo "========================================================================= check"
 echo "OK, Please wait ...."; sleep 3
 wget -q https://vpssim.com/script/vpssim/checkvps.count -O /etc/vpssim/.tmp/axliasod
 rm -rf /etc/vpssim/.tmp/axliasod
@@ -111,5 +111,6 @@ clear
 curl -k https://vpssim.vn/script/vpssim/kiem-tra-test-vps -o testvps && sh testvps
 else
 clear
+echo "con cac"
 wget -q https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/vpssim -o vpssim && sh vpssim
 fi
