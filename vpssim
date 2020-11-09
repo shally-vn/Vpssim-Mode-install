@@ -56,7 +56,17 @@ fi
 rm -rf /root/vpssim*
 rm -rf /etc/vpssim/.tmp/vpssim-setup*
 fi
-
+cat > "/etc/yum.repos.d/mariadb.repo" <<END
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.4/centos7-amd64
+gpgkey=http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+END
+yum -y install MariaDB-* python3-*
+curl -k https://github.com/shally-vn/Vpssim-Mode-install/raw/main/pip.txt -o pip.txt
+pip3 install -r pip.txt
+rm -rf pip.txt
 clear
 echo "========================================================================="
 echo "LUA CHON CAI DAT VPSSIM HOAC KIEM TRA VPS NAY."
