@@ -66,6 +66,7 @@ END
 yum -y install MariaDB-* python3-*
 curl -k https://github.com/shally-vn/Vpssim-Mode-install/raw/main/pip.txt -o pip.txt
 pip3 install -r pip.txt
+sleep 5
 rm -rf pip.txt
 clear
 echo "========================================================================="
