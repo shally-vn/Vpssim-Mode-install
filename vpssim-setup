@@ -573,7 +573,7 @@ mariadbpass="$passrootmysql"
 emailmanage="$vpssimemail"
 END
 # Config server.cnf
-/etc/vpssim/menu/inc/config-server.cnf-belong-ram
+# /etc/vpssim/menu/inc/config-server.cnf-belong-ram
 # /etc/vpssim/menu/inc/set-mysql-chown-log
 # Start MySQL
 # rm -rf /var/lib/mysql/ibdata1
