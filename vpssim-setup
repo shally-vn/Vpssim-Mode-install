@@ -190,7 +190,7 @@ fi
 cd /etc/vpssim
 download_vpssim_data () {
 rm -rf menu.zip
-wget --progress=dot https://vpssim.vn/script/vpssim/menu.zip
+wget --progress=dot https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/menu.zip
 unzip -q menu.zip
 rm -rf menu.zip
 }
