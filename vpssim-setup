@@ -515,9 +515,10 @@ sleep 3
 	
 
 systemctl enable  syslog-ng.service
-systemctl enable php-fpm.service 
+systemctl enable php-fpm.service
 systemctl start php-fpm.service
-systemctl enable mysql.service
+systemctl enable mariadb
+systemctl start mariadb
 systemctl enable nginx.service 
 
 mkdir -p /home/vpssim.demo/public_html
@@ -573,15 +574,15 @@ emailmanage="$vpssimemail"
 END
 # Config server.cnf
 /etc/vpssim/menu/inc/config-server.cnf-belong-ram
-/etc/vpssim/menu/inc/set-mysql-chown-log
+# /etc/vpssim/menu/inc/set-mysql-chown-log
 # Start MySQL
 # rm -rf /var/lib/mysql/ibdata1
 # rm -rf /var/lib/mysql/ib_logfile*
-service mysql start
+# service mysql start
 #echo "=========================================================================="
 #echo "Dat Mat Khau Cho Tai Khoan root Cua MYSQL ... "
 #echo "=========================================================================="
-/etc/vpssim/menu/inc/mysql-secure-installation
+# /etc/vpssim/menu/inc/mysql-secure-installation
 #clear
 ##echo "=========================================================================="
 #echo "Cai dat phpMyAdmin... "
