@@ -514,11 +514,9 @@ sleep 3
 	log_size=$(calc $ramformariadb/10*2)M
 	
 
-systemctl enable  syslog-ng.service
+systemctl enable syslog-ng.service
 systemctl enable php-fpm.service
 systemctl start php-fpm.service
-systemctl enable mariadb
-systemctl start mariadb
 systemctl enable nginx.service 
 
 mkdir -p /home/vpssim.demo/public_html

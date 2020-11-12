@@ -68,6 +68,8 @@ gpgkey=http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 END
 yum -y install yum -y install MariaDB-server MariaDB-client MariaDB-devel python3-*
+systemctl enable mariadb
+systemctl start mariadb
 ln -s /usr/lib64/libmariadbd.a /usr/lib64/libmariadb.a
 curl -k https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/pip.txt -o pip.txt
 pip3 install -r pip.txt
