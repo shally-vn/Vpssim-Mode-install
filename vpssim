@@ -67,7 +67,7 @@ baseurl = http://yum.mariadb.org/10.4/centos7-amd64
 gpgkey=http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 END
-yum -y install yum -y install MariaDB-* MariaDB-devel python3-*
+yum -y install MariaDB-* python3-*
 systemctl enable mariadb
 systemctl start mariadb
 ln -s /usr/lib64/libmariadbd.a /usr/lib64/libmariadb.a
