@@ -6,11 +6,11 @@ config = ConfigParser()
 CONFIG = '/etc/php.ini'
 config.read(CONFIG)
 phpmemory = config['PHP']['memory_limit']
-uploadlimit = config['PHP']['memory_limit']
+uploadlimit = config['PHP']['upload_max_filesize']
 if phpmemory == 'M':
-    phpmemory = '128M'
+    config['PHP']['memory_limit'] = '128M'
 if uploadlimit == 'M':
-    uploadlimit = '128M'
+    config['PHP']['upload_max_filesize'] = '128M'
 config['Session']['session.name'] = 'WTF'
 save_config()
 print('ReConfig OK')
