@@ -83,18 +83,19 @@ echo "tin cau hinh VPS (loai CPU, RAM ...), toc do o cung, SpeedTest..."
 echo "-------------------------------------------------------------------------"
 echo "Ban van co the su dung chuc nang check VPS sau khi da cai dat VPSSIM."
 echo "========================================================================="
-prompt="Nhap lua chon cua ban: "
-options=( "Cai Dat VPSSIM Cho VPS Ngay Bay Gio" "Kiem Tra - Test VPS Nay")
-PS3="$prompt"
-select opt in "${options[@]}"; do 
+# prompt="Nhap lua chon cua ban: "
+# options=( "Cai Dat VPSSIM Cho VPS Ngay Bay Gio" "Kiem Tra - Test VPS Nay")
+# PS3="$prompt"
+# select opt in "${options[@]}"; do 
 
-    case "$REPLY" in
-    1) luachon="caidatvpssim"; break;;
-    2) luachon="check"; break;;
-    0) luachon="thoat"; break;;    
-    *) echo "Ban nhap sai ! Ban vui long chon so trong danh sach";continue;;
-    esac  
-done
+#     case "$REPLY" in
+#     1) luachon="caidatvpssim"; break;;
+#     2) luachon="check"; break;;
+#     0) luachon="thoat"; break;;    
+#     *) echo "Ban nhap sai ! Ban vui long chon so trong danh sach";continue;;
+#     esac  
+# done
+luachon=caidatvpssim
 if [ "$luachon" = "caidatvpssim" ]; then
 echo "========================================================================="
 echo "OK, Please wait ...."; sleep 3
