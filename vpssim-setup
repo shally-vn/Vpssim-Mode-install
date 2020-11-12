@@ -284,6 +284,8 @@ IPvpssimcheck="\$(echo \$SSH_CONNECTION | cut -d " " -f 1)"
 timeloginvpssimcheck=\$(date +"%e %b %Y, %a %r")
 echo 'Someone has IP address '\$IPvpssimcheck' login to $svip on '\$timeloginvpssimcheck'.' | mail -s 'eMail Notifications From VPSSIM On $svip' ${vpssimemail}
 END
+sudo mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('$passrootmysql');FLUSH PRIVILEGES;" 
+printf "$passrootmysql\n n\n n\n n\n y\n y\n y\n" | sudo mysql_secure_installation
 echo "$svport" > /etc/vpssim/.tmp/priport.txt
 # Disable And remove unnessery service
 /etc/vpssim/menu/inc/disable-remove-service-vpssim-setup
