@@ -495,6 +495,7 @@ find /etc/nginx/conf -type f -exec chmod 644 {} \;
 yum-config-manager --enable remi-php71
 yum -y install php php-common php-fpm php-gd php-devel php-json
 yum -y install php-curl php-pecl-zip php-zip php-soap php-cli php-ldap php-mysqlnd php-pear-Net-SMTP php-enchant php-mysql php-pear php-opcache php-pdo php-zlib php-xml php-mbstring php-mcrypt
+yum -y install memcached
 ########### Check qua trinh cai dat Nginx ######################################
 if [ "$nginxrepo" != "1" ];then
 /etc/vpssim/menu/inc/vpssim-setup-nginx-from-repo
@@ -574,8 +575,8 @@ END
 /etc/vpssim/menu/inc/config-server.cnf-belong-ram
 /etc/vpssim/menu/inc/set-mysql-chown-log
 # Start MySQL
-rm -rf /var/lib/mysql/ibdata1
-rm -rf /var/lib/mysql/ib_logfile*
+# rm -rf /var/lib/mysql/ibdata1
+# rm -rf /var/lib/mysql/ib_logfile*
 service mysql start
 #echo "=========================================================================="
 #echo "Dat Mat Khau Cho Tai Khoan root Cua MYSQL ... "
@@ -667,6 +668,12 @@ chown -R nginx:nginx /var/cache/ngx_pagespeed
 /etc/vpssim/menu/inc/vpssim-tao-shortcut-command-ng-mql-phpfpm
 /etc/vpssim/menu/inc/start-php-fpm-service
 /etc/vpssim/menu/inc/start-nginx-service
+yum remove -y php-fpm
+yum install -y php-fpm
+systemctl enable php-fpm.service
+systemctl start php-fpm.service
+systemctl enable memcached
+systemctl start memcached
 clear
 echo "=========================================================================="
 echo "Qua trinh cai dat server da hoan tat. "
