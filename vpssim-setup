@@ -674,6 +674,8 @@ systemctl enable php-fpm.service
 systemctl start php-fpm.service
 systemctl enable memcached
 systemctl start memcached
+wget --progress=dot https://raw.githubusercontent.com/shally-vn/Vpssim-Mode-install/main/reconfig.py
+python3 reconfig.py
 clear
 echo "=========================================================================="
 echo "Qua trinh cai dat server da hoan tat. "
