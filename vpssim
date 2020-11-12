@@ -37,12 +37,14 @@ fi
 
 if [ ! -f /home/vpssim.conf ]; then
 #yum -y update
+# yum upgrade -y
+yum -y install ntpdate; /usr/sbin/ntpdate -u pool.ntp.org
 yum -y install epel-release
 if [ -f /etc/yum.repos.d/epel.repo ]; then
 sudo sed -i "s/mirrorlist=https/mirrorlist=http/" /etc/yum.repos.d/epel.repo
 fi
 #yum -y update
-yum -y install psmisc bc gawk gcc wget unzip net-tools
+yum -y install psmisc bc gawk gcc wget unzip net-tools ca-certificates
 yum -y -q install virt-what sudo zip iproute iproute2 curl deltarpm yum-utils tar nano
 wget -q https://vpssim.com/script/vpssim/calc -O /bin/calc && chmod +x /bin/calc
 if [ ! -f /bin/calc ]; then
