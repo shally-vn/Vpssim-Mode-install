@@ -37,7 +37,7 @@ fi
 
 if [ ! -f /home/vpssim.conf ]; then
 #yum -y update
-# yum upgrade -y
+yum upgrade -y
 yum -y install ntpdate; /usr/sbin/ntpdate -u pool.ntp.org
 timedatectl set-timezone Asia/Ho_Chi_Minh
 timedatectl set-ntp true
