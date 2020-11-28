@@ -284,8 +284,8 @@ IPvpssimcheck="\$(echo \$SSH_CONNECTION | cut -d " " -f 1)"
 timeloginvpssimcheck=\$(date +"%e %b %Y, %a %r")
 echo 'Someone has IP address '\$IPvpssimcheck' login to $svip on '\$timeloginvpssimcheck'.' | mail -s 'eMail Notifications From VPSSIM On $svip' ${vpssimemail}
 END
-sudo mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('$passrootmysql');FLUSH PRIVILEGES;" 
-printf "$passrootmysql\n y\n y\n $passrootmysql\n $passrootmysql\n n\n n\n n\n y\n y\n" | sudo mysql_secure_installation
+# sudo mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('$passrootmysql');FLUSH PRIVILEGES;" 
+# printf "$passrootmysql\n y\n y\n $passrootmysql\n $passrootmysql\n n\n n\n n\n y\n y\n" | sudo mysql_secure_installation
 echo "$svport" > /etc/vpssim/.tmp/priport.txt
 # Disable And remove unnessery service
 /etc/vpssim/menu/inc/disable-remove-service-vpssim-setup
@@ -573,16 +573,16 @@ mariadbpass="$passrootmysql"
 emailmanage="$vpssimemail"
 END
 # Config server.cnf
-# /etc/vpssim/menu/inc/config-server.cnf-belong-ram
-# /etc/vpssim/menu/inc/set-mysql-chown-log
+/etc/vpssim/menu/inc/config-server.cnf-belong-ram
+/etc/vpssim/menu/inc/set-mysql-chown-log
 # Start MySQL
-# rm -rf /var/lib/mysql/ibdata1
-# rm -rf /var/lib/mysql/ib_logfile*
+rm -rf /var/lib/mysql/ibdata1
+rm -rf /var/lib/mysql/ib_logfile*
 # service mysql start
 #echo "=========================================================================="
 #echo "Dat Mat Khau Cho Tai Khoan root Cua MYSQL ... "
 #echo "=========================================================================="
-# /etc/vpssim/menu/inc/mysql-secure-installation
+/etc/vpssim/menu/inc/mysql-secure-installation
 #clear
 ##echo "=========================================================================="
 #echo "Cai dat phpMyAdmin... "
