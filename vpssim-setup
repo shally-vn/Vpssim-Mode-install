@@ -583,6 +583,9 @@ rm -rf /var/lib/mysql/ib_logfile*
 #echo "Dat Mat Khau Cho Tai Khoan root Cua MYSQL ... "
 #echo "=========================================================================="
 /etc/vpssim/menu/inc/mysql-secure-installation
+# sudo mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('$passrootmysql');FLUSH PRIVILEGES;" 
+# printf "$passrootmysql\n y\n y\n $passrootmysql\n $passrootmysql\n n\n n\n n\n y\n y\n" | sudo mysql_secure_installation
+printf "\n $passrootmysql\n $passrootmysql\n $passrootmysql\n" | sudo mysql_secure_installation
 #clear
 ##echo "=========================================================================="
 #echo "Cai dat phpMyAdmin... "
