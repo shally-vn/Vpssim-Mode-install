@@ -258,18 +258,18 @@ echo "PHP Version: 7.1"
 echo "--------------------------------------------------------------------------"
 echo "VPSSIM Version: $vpssim_version"
 echo "=========================================================================="
-prompt="Nhap lua chon cua ban: "
-options=( "Dong Y" "Khong Dong Y")
-PS3="$prompt"
-select opt in "${options[@]}"; do 
+# prompt="Nhap lua chon cua ban: "
+# options=( "Dong Y" "Khong Dong Y")
+# PS3="$prompt"
+# select opt in "${options[@]}"; do 
 
-    case "$REPLY" in
-    1) xacnhanthongtin="dongy"; break;;
-    2) xacnhanthongtin="khongdongy"; break;;
-    *) echo "Ban nhap sai ! Ban vui long chon so trong danh sach";continue;;
-    esac  
-done
-
+#     case "$REPLY" in
+#     1) xacnhanthongtin="dongy"; break;;
+#     2) xacnhanthongtin="khongdongy"; break;;
+#     *) echo "Ban nhap sai ! Ban vui long chon so trong danh sach";continue;;
+#     esac  
+# done
+xacnhanthongtin='dongy'
 if [ "$xacnhanthongtin" = "dongy" ]; then
 echo "--------------------------------------------------------------------------"
 echo "Chuan Bi Cai Dat VPSSIM ..."
