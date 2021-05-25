@@ -205,7 +205,7 @@ find /etc/vpssim/menu/inc -type f -exec chmod 755 {} \;
 /etc/vpssim/menu/inc/download-vpssim-main-menu
 ###############################################################################
 #Download Nginx, VPSSIM & phpMyadmin Version
-/etc/vpssim/menu/inc/vpssim-download-nginx-version-phpmyadmin-version-vpssim-version
+# /etc/vpssim/menu/inc/vpssim-download-nginx-version-phpmyadmin-version-vpssim-version
 ###############################################################################
 phpmyadmin_version=`cat /etc/vpssim/.tmp/version.vpssim | awk '{print $1}'`
 Nginx_VERSION=`cat /etc/vpssim/.tmp/version.vpssim | awk '{print $2}'`
